@@ -3,14 +3,19 @@ export default {
   content: ['./index.html', './src/**/*.{jsx,tsx}'],
   theme: {
     extend: {
+      borderColor: {
+        default: '#CBB6E5',
+        active: '#761BE4',
+        error: '#ED4545',
+      },
+      fontSize: {
+        sm: '16px',
+        md: '18px',
+        l: '24px',
+      },
       colors: {
         primary: '#000853',
         secondary: '#898DA9',
-        border: {
-          default: '#CBB6E5',
-          active: '#761BE4',
-          error: '#ED4545',
-        },
       },
       backgroundColor: {
         inactive: '#CBB6E5',
