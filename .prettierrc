@@ -8,5 +8,8 @@
   "htmlWhitespaceSensitivity": "strict",
   "tabWidth": 2,
   "bracketSpacing": true,
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ]
 }
