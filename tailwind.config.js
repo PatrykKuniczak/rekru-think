@@ -3,10 +3,13 @@ export default {
   content: ['./index.html', './src/**/*.{jsx,tsx}'],
   theme: {
     extend: {
-      borderColor: {
-        default: '#CBB6E5',
+      outlineColor: {
+        DEFAULT: '#CBB6E5',
         active: '#761BE4',
         error: '#ED4545',
+      },
+      outlineWidth: {
+        DEFAULT: '1px',
       },
       fontSize: {
         sm: '16px',
