@@ -1,9 +1,9 @@
 const LabeledInput = ({ children }: { children: string }) => (
   <div className={'flex flex-col'}>
-    <label className={'mb-2'} htmlFor={children}>
+    <label className={'text mb-2'} htmlFor={children}>
       {children}
     </label>
-    <input className={'focus-visible:outline-active h-[48px] px-1 outline outline-1'} name={children} />
+    <input className={'h-[48px] px-1 outline outline-1 focus-visible:outline-active'} name={children} />
   </div>
 );
 

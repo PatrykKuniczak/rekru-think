@@ -17,7 +17,7 @@ export default {
         l: '24px',
       },
       colors: {
-        primary: '#000853',
+        DEFAULT: '#000853',
         secondary: '#898DA9',
       },
       backgroundColor: {
