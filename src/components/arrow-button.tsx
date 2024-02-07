@@ -12,7 +12,7 @@ const ArrowButton = ({ onClick, imgAlt, direction, disabled }: IArrowButtonProps
   return (
     <button className={'focus-visible:outline-active'} type={'button'} onClick={onClick} disabled={disabled}>
       <img
-        className={cn({ 'p-2': true, 'rotate-180': direction === 'right', 'opacity-80': disabled })}
+        className={cn({ 'p-2 hover:opacity-80': true, 'rotate-180': direction === 'right', 'opacity-80': disabled })}
         src={LeftArrow}
         alt={imgAlt}
       />
