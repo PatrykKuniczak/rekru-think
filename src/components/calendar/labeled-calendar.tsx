@@ -10,7 +10,7 @@ const LabeledCalendar = ({ children, selectedYear }: { children: string; selecte
 
   return (
     <div className={'w-[326px]'}>
-      <label className={'my-1 inline-block text'}>{children}</label>
+      <span className={'my-1 inline-block text'}>{children}</span>
       <div className={'flex flex-col p-4 outline'}>
         <CalendarNav
           selectedMonth={selectedMonth}
