@@ -24,8 +24,9 @@ const DaysContainer = ({ selectedMonth, selectedDay, selectedYear, setSelectedDa
             key={index + firstDayOfMonth}
             type={'button'}
             className={cn({
-              'h-[30px] w-[30px] focus-visible:outline-active': true,
-              'rounded-full bg text-white': selectedDay === date,
+              'h-[30px] w-[30px] rounded-full focus-visible:outline-active': true,
+              'bg text-white': selectedDay === date,
+              'hover:bg-inactive': selectedDay !== date,
             })}
             onClick={() => setSelectedDay(date)}>
             {date}
