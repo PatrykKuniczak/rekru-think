@@ -1,12 +1,28 @@
 import { DAYS } from '../../constants.ts';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import cn from 'classnames';
 import CalendarNav from './calendar-nav.tsx';
 import DaysContainer from './days-container.tsx';
 
-const LabeledCalendar = ({ children, selectedYear }: { children: string; selectedYear: number }) => {
+const LabeledCalendar = ({
+  children,
+  selectedYear,
+  setShouldOpenTimePicker,
+}: {
+  children: string;
+  selectedYear: number;
+  setShouldOpenTimePicker: Dispatch<SetStateAction<boolean>>;
+}) => {
   const [selectedMonth, setSelectedMonth] = useState(0);
   const [selectedDay, setSelectedDay] = useState(0);
+
+  useEffect(() => {
+    if (selectedDay) {
+      setShouldOpenTimePicker(true);
+    } else {
+      setShouldOpenTimePicker(false);
+    }
+  }, [selectedDay, setShouldOpenTimePicker]);
 
   return (
     <div className={'w-[326px]'}>
