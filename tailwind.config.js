@@ -35,5 +35,6 @@ export default {
       },
     },
   },
+  safelist: [{ pattern: /col-span-([12345])/ }],
   plugins: [],
 };
