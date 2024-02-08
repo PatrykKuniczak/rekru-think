@@ -7,7 +7,9 @@ const LabeledTimePicker = ({ children }: { children: string }) => {
 
   return (
     <div className={'flex flex-col gap-2'}>
-      <span>{children}</span>
+      <label htmlFor={'time'}>{children}</label>
+      <input value={selectedTime} name={'time'} type={'hidden'} />
+
       {DAMMY_HOURS.map(value => (
         <button
           key={value}
