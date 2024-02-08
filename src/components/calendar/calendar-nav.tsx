@@ -17,7 +17,7 @@ const CalendarNav = ({ selectedMonth, selectedYear, setSelectedMonth, setSelecte
           setSelectedMonth(currentMonth => currentMonth - 1);
           setSelectedDay(0);
         }}
-        disabled={selectedMonth === 0}
+        disabled={!selectedMonth}
         imgAlt={'Select next month'}
         direction={'left'}
       />
