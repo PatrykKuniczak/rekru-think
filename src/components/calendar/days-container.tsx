@@ -1,6 +1,6 @@
 import generateDates from '../../utils/generate-dates.ts';
 import cn from 'classnames';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, Fragment, SetStateAction } from 'react';
 
 interface IDaysContainerProps {
   selectedDay: number;
@@ -13,7 +13,7 @@ const DaysContainer = ({ selectedMonth, selectedDay, selectedYear, setSelectedDa
   return (
     <div className={'grid grid-cols-7 place-items-center gap-0.5'}>
       {generateDates(selectedMonth, selectedYear).map(({ date, firstDayOfMonth }, index) => (
-        <>
+        <Fragment key={firstDayOfMonth + index}>
           {!index && (
             <div
               key={'blank-place'}
@@ -31,7 +31,7 @@ const DaysContainer = ({ selectedMonth, selectedDay, selectedYear, setSelectedDa
             onClick={() => setSelectedDay(date)}>
             {date}
           </button>
-        </>
+        </Fragment>
       ))}
     </div>
   );
