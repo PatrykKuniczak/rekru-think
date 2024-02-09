@@ -2,6 +2,7 @@ import { DAYS } from '../../constants.ts';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import CalendarNav from './calendar-nav.tsx';
 import DaysContainer from './days-container.tsx';
+import useGetHolidays from '../hooks/use-get-holidays.ts';
 
 const LabeledCalendar = ({
   children,
@@ -14,6 +15,7 @@ const LabeledCalendar = ({
 }) => {
   const [selectedMonth, setSelectedMonth] = useState(0);
   const [selectedDay, setSelectedDay] = useState(0);
+  const holidays = useGetHolidays();
 
   const validMonthForInput = `${selectedMonth < 9 ? `0${selectedMonth + 1}` : `${selectedMonth + 1}`}`;
   const validDayForInput = `${selectedDay < 10 ? `0${selectedDay}` : `${selectedDay}`}`;
@@ -51,9 +53,10 @@ const LabeledCalendar = ({
 
         <DaysContainer
           selectedDay={selectedDay}
-          selectedMonth={selectedMonth}
           setSelectedDay={setSelectedDay}
+          selectedMonth={selectedMonth}
           selectedYear={selectedYear}
+          holidays={holidays}
         />
       </div>
     </div>

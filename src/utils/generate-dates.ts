@@ -7,7 +7,9 @@ const generateDates = (month = dayjs().month(), year = dayjs().year()) => {
   const daysInMonth = lastDateOfMonth.date() - firstDateOfMonth.date() + 1;
 
   return Array.from({ length: daysInMonth }, (_, i) => ({
-    date: firstDateOfMonth.date(i + 1).date(),
+    date: firstDateOfMonth.date(i + 1).toDate(),
+    formatDate: firstDateOfMonth.date(i + 1).format('YYYY-MM-DD'),
+    dateNumber: firstDateOfMonth.date(i + 1).date(),
     firstDayOfMonth: firstDateOfMonth.day(),
   }));
 };
