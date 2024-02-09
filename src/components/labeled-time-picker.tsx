@@ -1,4 +1,4 @@
-import { DAMMY_HOURS } from '../constants.ts';
+import { DUMMY_HOURS } from '../constants.ts';
 import { useState } from 'react';
 import cn from 'classnames';
 
@@ -10,7 +10,7 @@ const LabeledTimePicker = ({ children }: { children: string }) => {
       <label htmlFor={'time'}>{children}</label>
       <input value={selectedTime} name={'time'} type={'hidden'} />
 
-      {DAMMY_HOURS.map(value => (
+      {DUMMY_HOURS.map(value => (
         <button
           key={value}
           type={'button'}
