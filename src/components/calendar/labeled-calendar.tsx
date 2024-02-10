@@ -47,9 +47,7 @@ const LabeledCalendar = ({
 
         <div className={'flex justify-between p-3'}>
           {DAYS.map((day, index) => (
-            <h1 key={day + index} className={'font-semibold'}>
-              {day}
-            </h1>
+            <h1 key={day + index}>{day}</h1>
           ))}
         </div>
 
