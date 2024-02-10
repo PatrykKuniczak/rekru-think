@@ -16,7 +16,7 @@ const LabeledTimePicker = ({ children }: { children: string }) => {
           type={'button'}
           onClick={() => setSelectedTime(value)}
           className={cn({
-            'px-3 py-1.5 outline hover:outline-active focus-visible:outline-active': true,
+            'rounded px-3 py-1.5 outline hover:outline-active focus-visible:outline-active': true,
             'outline-2 outline-active': selectedTime === value,
           })}>
           {value}
