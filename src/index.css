@@ -10,17 +10,8 @@
   margin: 0;
   padding: 0;
   border: transparent;
-  border-radius: 8px;
 
   font-family: 'Inter', sans-serif;
-}
-
-@layer base {
-  *,
-  ::before,
-  ::after {
-    @apply text-sm;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -15,8 +15,8 @@ export default {
         DEFAULT: '1px',
       },
       fontSize: {
-        sm: '16px',
-        md: '18px',
+        sm: '14px',
+        DEFAULT: '16px',
         l: '24px',
       },
       colors: {
@@ -32,6 +32,9 @@ export default {
       },
       content: {
         numberBubble: 'url("./src/assets/number-bubble.svg")',
+      },
+      borderRadius: {
+        DEFAULT: '8px',
       },
     },
   },
