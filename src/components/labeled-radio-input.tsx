@@ -1,6 +1,12 @@
 import { useRef, useState } from 'react';
 
-const LabeledRadioInput = ({ children, min, max }: { children: string; min: number; max: number }) => {
+interface ILabeledRadioInputProps {
+  children: string;
+  min: number;
+  max: number;
+}
+
+const LabeledRadioInput = ({ children, min, max }: ILabeledRadioInputProps) => {
   const [currentValue, setCurrentValue] = useState(min);
   const ref = useRef<HTMLInputElement>(null);
 

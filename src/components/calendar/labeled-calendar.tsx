@@ -6,15 +6,13 @@ import useGetHolidays from '../hooks/use-get-holidays.ts';
 import InfoWithImg from '../info-with-img.tsx';
 import ExclamationMark from '../../assets/exclamation-mark.svg';
 
-const LabeledCalendar = ({
-  children,
-  selectedYear,
-  setShouldOpenTimePicker,
-}: {
+interface ILabeledCalendarProps {
   children: string;
   selectedYear: number;
   setShouldOpenTimePicker: Dispatch<SetStateAction<boolean>>;
-}) => {
+}
+
+const LabeledCalendar = ({ children, selectedYear, setShouldOpenTimePicker }: ILabeledCalendarProps) => {
   const [selectedMonth, setSelectedMonth] = useState(0);
   const [selectedDay, setSelectedDay] = useState(0);
   const [selectedHolidayInfo, setSelectedHolidayInfo] = useState('');
