@@ -8,14 +8,24 @@ interface IDaysContainerProps {
   selectedMonth: number;
   selectedYear: number;
   setSelectedDay: Dispatch<SetStateAction<number>>;
+  setSelectedHolidayInfo: Dispatch<SetStateAction<string>>;
   holidays: IHolidaysResponse[];
 }
 
-const DaysContainer = ({ selectedMonth, selectedDay, selectedYear, setSelectedDay, holidays }: IDaysContainerProps) => {
+const DaysContainer = ({
+  selectedMonth,
+  selectedDay,
+  selectedYear,
+  setSelectedDay,
+  setSelectedHolidayInfo,
+  holidays,
+}: IDaysContainerProps) => {
   return (
     <div className={'grid grid-cols-7 place-items-center gap-0.5'}>
       {generateDates(selectedMonth, selectedYear).map(({ date, formatDate, dateNumber, firstDayOfMonth }, index) => {
-        const dayType = holidays.find(val => val.date === formatDate)?.type;
+        const findHolidayByDate = holidays.find(val => val.date === formatDate);
+        const dayType = findHolidayByDate?.type;
+        const holidayDescription = findHolidayByDate?.name;
         const isSunday = !date.getDay();
 
         return (
@@ -35,7 +45,15 @@ const DaysContainer = ({ selectedMonth, selectedDay, selectedYear, setSelectedDa
                 'bg text-white': selectedDay === dateNumber,
                 'hover:bg-inactive': selectedDay !== dateNumber && !dayType && !isSunday,
               })}
-              onClick={() => setSelectedDay(dateNumber)}>
+              onClick={() => {
+                setSelectedDay(dateNumber);
+
+                if (dayType === 'OBSERVANCE' && holidayDescription) {
+                  setSelectedHolidayInfo(holidayDescription);
+                } else {
+                  setSelectedHolidayInfo('');
+                }
+              }}>
               {dateNumber}
             </button>
           </Fragment>

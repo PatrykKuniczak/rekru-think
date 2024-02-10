@@ -26,7 +26,7 @@ function App() {
           </LabeledCalendar>
           {shouldOpenTimePicker && <LabeledTimePicker>Time</LabeledTimePicker>}
         </div>
-        <button className={'mt-6 rounded bg py-2.5 text-white hover:bg-hover'}>Send Application</button>
+        <button className={'rounded bg py-2.5 text-white hover:bg-hover'}>Send Application</button>
       </form>
     </div>
   );
