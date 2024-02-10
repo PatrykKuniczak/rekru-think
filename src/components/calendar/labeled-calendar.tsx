@@ -2,7 +2,7 @@ import { DAYS } from '../../constants.ts';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import CalendarNav from './calendar-nav.tsx';
 import DaysContainer from './days-container.tsx';
-import useGetHolidays from '../hooks/use-get-holidays.ts';
+import useGetHolidays from '../../hooks/use-get-holidays.ts';
 import InfoWithImg from '../info-with-img.tsx';
 import ExclamationMark from '../../assets/exclamation-mark.svg';
 
