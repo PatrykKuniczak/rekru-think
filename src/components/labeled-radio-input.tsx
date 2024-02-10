@@ -5,6 +5,7 @@ const LabeledRadioInput = ({ children, min, max }: { children: string; min: numb
   const ref = useRef<HTMLInputElement>(null);
 
   const currentOffset = ((currentValue - min) * 100) / (max - min);
+  const offsetFromLeftBorder = `calc(${currentOffset}% + (${8 - currentOffset * 0.15}px))`;
 
   return (
     <div className={'flex flex-col'}>
@@ -23,13 +24,16 @@ const LabeledRadioInput = ({ children, min, max }: { children: string; min: numb
         onChange={value => {
           setCurrentValue(+value.target.value);
         }}
+        style={{
+          background: `linear-gradient(to right, #761BE4 ${offsetFromLeftBorder}, #CBB6E5 ${offsetFromLeftBorder})`,
+        }}
         className={
           'relative mt-5 h-1 cursor-pointer appearance-none rounded-full accent outline-offset-2 before:absolute before:bottom-4 before:content-[attr(data-before)] after:absolute after:bottom-4 after:right-0 after:content-[attr(data-after)] focus-visible:outline-active dark:bg-inactive'
         }
         name={children}
       />
       <output
-        style={{ left: `calc(${currentOffset}% + (${8 - currentOffset * 0.15}px))` }}
+        style={{ left: offsetFromLeftBorder }}
         className={
           'relative mt-3 grid h-[33px] w-0 place-items-center justify-center text-active before:absolute before:z-[-1] before:content-numberBubble'
         }>
