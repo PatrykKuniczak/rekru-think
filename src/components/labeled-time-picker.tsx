@@ -1,14 +1,24 @@
 import { DUMMY_HOURS } from '../constants.ts';
 import { useState } from 'react';
 import cn from 'classnames';
+import { ILabeledInput } from '../interfaces.ts';
+import InfoWithImg from './info-with-img.tsx';
+import ExclamationMark from '../assets/exclamation-mark.svg';
 
-const LabeledTimePicker = ({ children }: { children: string }) => {
+const LabeledTimePicker = ({ children, errorName, showValidationError, inputName, changeFormValue }: ILabeledInput) => {
   const [selectedTime, setSelectedTime] = useState('');
 
   return (
     <div className={'flex flex-col gap-2'}>
-      <label htmlFor={'time'}>{children}</label>
-      <input value={selectedTime} name={'time'} type={'hidden'} />
+      <label htmlFor={inputName}>{children}</label>
+      <input
+        value={selectedTime}
+        name={inputName}
+        type={'hidden'}
+        onChange={event => {
+          changeFormValue(inputName, event.target.value);
+        }}
+      />
 
       {DUMMY_HOURS.map(value => (
         <button
@@ -22,6 +32,11 @@ const LabeledTimePicker = ({ children }: { children: string }) => {
           {value}
         </button>
       ))}
+      {showValidationError && (
+        <InfoWithImg imgSrc={ExclamationMark} imgAlt={'Invalid name'}>
+          {errorName}
+        </InfoWithImg>
+      )}
     </div>
   );
 };
