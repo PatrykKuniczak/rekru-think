@@ -1,7 +1,7 @@
 import generateDates from '../../utils/generate-dates.ts';
 import cn from 'classnames';
 import { Dispatch, Fragment, SetStateAction } from 'react';
-import { IHolidaysResponse } from '../hooks/use-get-holidays.ts';
+import { IHolidaysResponse } from '../../hooks/use-get-holidays.ts';
 
 interface IDaysContainerProps {
   selectedDay: number;

@@ -2,17 +2,25 @@ import { DAYS } from '../../constants.ts';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import CalendarNav from './calendar-nav.tsx';
 import DaysContainer from './days-container.tsx';
-import useGetHolidays from '../hooks/use-get-holidays.ts';
+import useGetHolidays from '../../hooks/use-get-holidays.ts';
 import InfoWithImg from '../info-with-img.tsx';
 import ExclamationMark from '../../assets/exclamation-mark.svg';
+import { ILabeledInput } from '../../interfaces.ts';
 
-interface ILabeledCalendarProps {
-  children: string;
+interface ILabeledCalendarProps extends ILabeledInput {
   selectedYear: number;
   setShouldOpenTimePicker: Dispatch<SetStateAction<boolean>>;
 }
 
-const LabeledCalendar = ({ children, selectedYear, setShouldOpenTimePicker }: ILabeledCalendarProps) => {
+const LabeledCalendar = ({
+  children,
+  selectedYear,
+  setShouldOpenTimePicker,
+  showValidationError,
+  inputName,
+  errorName,
+  changeFormValue,
+}: ILabeledCalendarProps) => {
   const [selectedMonth, setSelectedMonth] = useState(0);
   const [selectedDay, setSelectedDay] = useState(0);
   const [selectedHolidayInfo, setSelectedHolidayInfo] = useState('');
@@ -31,9 +39,16 @@ const LabeledCalendar = ({ children, selectedYear, setShouldOpenTimePicker }: IL
 
   return (
     <div className={'flex min-h-[340px] min-w-[326px] flex-col gap-y-2'}>
-      <label htmlFor={'date'}>{children}</label>
+      <label htmlFor={inputName}>{children}</label>
 
-      <input name={'date'} value={`${selectedYear}-${validMonthForInput}-${validDayForInput}`} type={'hidden'} />
+      <input
+        name={inputName}
+        value={selectedDay ? `${selectedYear}-${validMonthForInput}-${validDayForInput}` : ''}
+        type={'hidden'}
+        onChange={event => {
+          changeFormValue(inputName, event.target.value);
+        }}
+      />
 
       <div className={'flex flex-col rounded p-4 outline'}>
         <CalendarNav
@@ -67,6 +82,11 @@ const LabeledCalendar = ({ children, selectedYear, setShouldOpenTimePicker }: IL
             'rotate-180 brightness-[97%] saturate-[100%] invert-[35%] sepia-[58%] hue-rotate-[336deg] contrast-[91%]'
           }>
           {selectedHolidayInfo}
+        </InfoWithImg>
+      )}
+      {showValidationError && (
+        <InfoWithImg imgSrc={ExclamationMark} imgAlt={'Invalid name'}>
+          {errorName}
         </InfoWithImg>
       )}
     </div>
